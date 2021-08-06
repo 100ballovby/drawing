@@ -44,6 +44,14 @@ day = True
 # Game loop
 done = False
 
+
+def get_keyboard_event():
+    global lights_on, day
+    if event.key == pygame.K_l:
+        lights_on = not lights_on
+    elif event.key == pygame.K_d:
+        day = not day
+
 while not done:
     # Event processing (React to key presses, mouse clicks, etc.)
     ''' for now, we'll just check to see if the X is clicked '''
@@ -51,10 +59,7 @@ while not done:
         if event.type == pygame.QUIT:
             done = True
         elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_l:
-                lights_on = not lights_on
-            elif event.key == pygame.K_d:
-                day = not day
+            get_keyboard_event()
 
     # Game logic (Check for collisions, update points, etc.)
     ''' leave this section alone for now '''
